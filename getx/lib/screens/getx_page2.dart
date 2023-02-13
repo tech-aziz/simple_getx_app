@@ -28,6 +28,9 @@ class GetXSecondPage extends StatelessWidget {
               color: Colors.white,
               size: 18,
             )),
+            actions: [
+              Text(mangoProduct.mangoValue.toString()),
+            ],
       ),
     );
   }

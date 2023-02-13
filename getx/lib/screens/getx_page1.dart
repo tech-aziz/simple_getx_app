@@ -53,18 +53,18 @@ class GetX_Page1 extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                // InkWell(
-                //   onTap: () {
-                //     Get.to(GetXSecondPage(), arguments: mangoProduct.mangoValue);
-                //   },
-                //   child: customCard(
-                //       image: Image.network(
-                //           'https://stoller.com.au/wp-content/uploads/2020/04/iStock-529964085-scaled.jpg'),
-                //       productName: 'Mango',
-                //       weight: 2,
-                //       price: 300.00),
-                // ),
-                // const SizedBox(height: 5,),
+                InkWell(
+                  onTap: () {
+                    Get.to(GetXSecondPage(), arguments: mangoProduct.mangoValue);
+                  },
+                  child: customCard(
+                      image: Image.network(
+                          'https://stoller.com.au/wp-content/uploads/2020/04/iStock-529964085-scaled.jpg'),
+                      productName: 'Mango',
+                      weight: 2,
+                      price: 300.00),
+                ),
+                const SizedBox(height: 5,),
 
                 // InkWell(
                 //   onTap: () {
