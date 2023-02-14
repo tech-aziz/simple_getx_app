@@ -117,7 +117,8 @@ Widget customCard(
                       width: 35,
                       height: 35,
                       child: Center(
-                        child: Obx(() => Text(appleInstance.appleValue.toString(),
+                        child: Obx(() => Text(
+                            appleInstance.appleValue.toString(),
                             style: const TextStyle(
                                 fontSize: 22, color: Colors.black))),
                       ),

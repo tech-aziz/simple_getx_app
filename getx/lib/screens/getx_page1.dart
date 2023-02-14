@@ -1,18 +1,29 @@
 // ignore_for_file: camel_case_types
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/screens/getx_page2.dart';
+import 'package:getx/screens/page1.dart';
 
 import '../controller/apple_controller.dart';
 import '../controller/mango_controller.dart';
 import '../widgets/custom_card.dart';
 
-class GetX_Page1 extends StatelessWidget {
-  final AppleController appleProduct = Get.put(AppleController());
-  final MangoController mangoProduct = Get.put(MangoController());
+class GetX_Page1 extends StatefulWidget {
 
   GetX_Page1({super.key});
+
+  @override
+  State<GetX_Page1> createState() => _GetX_Page1State();
+}
+
+class _GetX_Page1State extends State<GetX_Page1> {
+  final AppleController appleProduct = Get.put(AppleController());
+
+  // final MangoController mangoProduct = Get.put(MangoController());
+  RxInt count = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +66,7 @@ class GetX_Page1 extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(GetXSecondPage(), arguments: mangoProduct.mangoValue);
+                    // Get.to(GetXSecondPage(), arguments: mangoProduct.mangoValue);
                   },
                   child: customCard(
                       image: Image.network(
@@ -64,7 +75,128 @@ class GetX_Page1 extends StatelessWidget {
                       weight: 2,
                       price: 300.00),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
+
+                TextButton.icon(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: const BorderSide(color: Colors.green)))),
+                    onPressed: () {
+                      Get.snackbar('', '',
+                          snackPosition: SnackPosition.BOTTOM,
+                          snackStyle: SnackStyle.FLOATING,
+                          // overlayBlur: .8,
+                          // overlayColor: Colors.red[200],
+                          duration: const Duration(seconds: 3),
+                          // animationDuration: const Duration(seconds: 1),
+                          backgroundColor: Colors.green,
+                          titleText: const Text(
+                            'Welcome',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          icon: const Icon(
+                            Icons.share,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          maxWidth: MediaQuery.of(context).size.width / 2,
+                          // padding: const EdgeInsets.all(20),
+                          // margin: const EdgeInsets.all(50),
+                          isDismissible: true,
+                          messageText: const Text(
+                              'To Media Soft Data System Ltd',
+                              style: TextStyle(color: Colors.white)));
+                    },
+                    icon: const Icon(
+                      Icons.message_rounded,
+                      color: Colors.green,
+                      size: 15,
+                    ),
+                    label: const Text('SnackBar')),
+                const SizedBox(
+                  height: 5,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Get.defaultDialog(
+                        radius: 25,
+                        title: 'This is dialog',
+                        titlePadding: const EdgeInsets.all(5),
+                        barrierDismissible: false,
+                        content: middleContent(),
+                        confirm: confirmBtn(),
+                        cancel: cencleBtn(),
+                        // content: Text('data'),
+                        // textCancel: 'Ignore',
+                        // textConfirm: 'Ok',
+                        // onConfirm: () {
+                        //   Get.back();
+                        // },
+                        // onCancel: () {
+
+                        // },
+                        // cancel: Text('data'),
+
+                        // middleText: 'This is the middle text .....',
+                      );
+                    },
+                    child: const Text('Show Dialog')),
+
+                ElevatedButton(
+                    onPressed: () {
+                      Get.bottomSheet(
+                          // backgroundColor: Colors.red,
+                          elevation: 20,
+                          backgroundColor: Colors.white,
+                          barrierColor: Colors.green,
+                          isDismissible: true,
+                          // ignoreSafeArea: false,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          )),
+                          SizedBox(
+                            height: 200,
+                            child: Column(
+                              children: const [
+                                ListTile(
+                                  leading: Icon(
+                                    Icons.menu,
+                                    color: Colors.green,
+                                  ),
+                                  title: Text('Azizul Hakim'),
+                                  subtitle: Text('Software Engineer'),
+                                  trailing: Icon(
+                                    Icons.call,
+                                    color: Colors.green,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ));
+                    },
+                    child: Text('Show Bottom Sheet')),
+
+                ElevatedButton(
+                    onPressed: () {
+                      count++;
+                      setState(() {
+                        
+                      });
+                    },
+                    child:const Text('plus/minus')),
+                Obx(()=>Text('$count')),
+
+                ElevatedButton(
+                    onPressed: () {
+                      // Get.to(Page1());
+                      Get.toNamed('/page1');
+                    },
+                    child:const Text('Go Page1')),
 
                 // InkWell(
                 //   onTap: () {
@@ -106,5 +238,26 @@ class GetX_Page1 extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  Widget middleContent() {
+    return Column(
+      children: const [
+        Text('Middle Content one here'),
+        Text('Middle Content one Widgets')
+      ],
+    );
+  }
+
+  Widget confirmBtn() {
+    return ElevatedButton(
+        onPressed: () {
+          Get.back();
+        },
+        child: const Text('Confirm'));
+  }
+
+  Widget cencleBtn() {
+    return ElevatedButton(onPressed: () {}, child: const Text('Cancle'));
   }
 }
