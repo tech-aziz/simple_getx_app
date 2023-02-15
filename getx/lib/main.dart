@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
         getPages: [
           GetPage(name: '/getx_page1', page: () => GetX_Page1()),
           GetPage(name: '/getx_page2', page: () => GetXSecondPage()),
-          GetPage(name: '/page1', page: () => const Page1()),
+          GetPage(name: '/page1', page: () =>  Page1()),
           GetPage(name: '/page2', page: () => const Page2()),
           GetPage(name: '/page3', page: () => const Page3()),
           ],
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: GetX_Page1());
+        home: Page1());
   }
 }
