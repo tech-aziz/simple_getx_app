@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getx/screens/page1.dart';
 import 'package:getx/screens/page3.dart';
@@ -8,6 +9,8 @@ import 'screens/getx_page2.dart';
 import 'screens/page2.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -26,11 +29,11 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/getx_page2', page: () => GetXSecondPage()),
           GetPage(name: '/page1', page: () =>  Page1()),
           GetPage(name: '/page2', page: () => const Page2()),
-          GetPage(name: '/page3', page: () => const Page3()),
+          GetPage(name: '/page3', page: () =>  Page3()),
           ],
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Page2());
+        home:  Page3());
   }
 }

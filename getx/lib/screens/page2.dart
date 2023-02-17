@@ -3,21 +3,20 @@ import 'package:get/get.dart';
 import 'package:getx/screens/page3.dart';
 
 class Page2 extends StatelessWidget {
-  List<Step> stepList() => [
-        const Step(
-            title: Text('Account'),
-            content: Text('Account')),
-        const Step(
-            title: Text('Address'),
-            content: Text('Address')),
-        const Step(
-            title: Text('Confirm'),
-            content: Text('Confirm'))
-      ];
+  // List<Step> stepLists() {
+  //   return [
+  //       const Step(title: Text('Account'), content: Text('Account')),
+  //       const Step(title: Text('Address'), content: Text('Address')),
+  //       const Step(title: Text('Confirm'), content: Text('Confirm'))
+  //     ];
+  // }
+  
   const Page2({super.key});
 
   @override
   Widget build(BuildContext context) {
+   var myList = List<String>.generate(1000,(counter) => "Item $counter");
+   
     return Scaffold(
       appBar: AppBar(
         title: Text('Page 2'),
@@ -55,9 +54,15 @@ class Page2 extends StatelessWidget {
               }
             },
           ),
-          Stepper(
-            type: StepperType.vertical,
-            steps: stepList(),
+          // Stepper(
+          //   type: StepperType.vertical,
+          //   steps: stepLists(),
+          // ),
+          Text('data'),
+          ListView(
+            children: [
+              Text("This is List: "+myList.toString()),
+            ],
           )
         ],
       ),
