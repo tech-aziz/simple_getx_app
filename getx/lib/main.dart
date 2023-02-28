@@ -7,6 +7,7 @@ import 'package:getx/screens/page3.dart';
 import 'screens/getx_page1.dart';
 import 'screens/getx_page2.dart';
 import 'screens/list_view.dart';
+import 'screens/note_list.dart';
 import 'screens/page2.dart';
 
 void main() {
@@ -35,6 +36,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:const  ListViewDemo());
+        home:const  NoteList());
   }
 }

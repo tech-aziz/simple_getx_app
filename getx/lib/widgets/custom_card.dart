@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../controller/apple_controller.dart';
-import '../controller/mango_controller.dart';
 
 Widget customCard(
     {required Image image,
