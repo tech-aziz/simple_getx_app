@@ -25,9 +25,7 @@ class _NoteDetailsState extends State<NoteDetails> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: WillPopScope(
-        onWillPop: () {
-          moveToLastScreen();
-        },
+        onWillPop: () => moveToLastScreen(),
         child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -121,8 +119,8 @@ class _NoteDetailsState extends State<NoteDetails> {
       ),
     );
   }
-  
-  void moveToLastScreen() {
-    
+
+  moveToLastScreen() {
+    return Navigator.pop(context);
   }
 }
